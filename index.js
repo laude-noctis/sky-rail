@@ -9,20 +9,44 @@ const questions = [
     },
     {
         type: "input",
-        name: "color-text",
+        name: "colorText",
         message: "Enter a color for the text:",
     },
     {
         type: "list",
         name: "shape",
-        message: "Choose triangle, circle, and square:",
-        choices: ["triangle",
-        "circle",
-        "square"]
+        message: "Choose triangle, circle, or square:",
+        choices: ["triangle", "circle", "square"],
     },
     {
         type: "input",
-        name: "color-shape",
+        name: "colorShape",
         message: "Enter a color for the shape:",
-    }
-]
+    },
+];
+
+const generateSvgContent = ({ text, colorText, shape, colorShape }) =>
+`<svg>
+<text fill="${colorText}">${text}</text>
+<${shape} fill="${colorShape}"></${shape}>
+</svg>`;
+
+
+function writeToFile(fileName, content) {
+    fs.writeFile(fileName, content, (err) => {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log(`Generated ${fileName}! :)`);
+        }
+    });
+}
+
+function init() {
+    inquirer.prompt(questions).then((answers) => {
+      const svgContent = generateSvgContent(answers);
+      writeToFile("logo.svg", svgContent);
+    });
+}
+
+init()
