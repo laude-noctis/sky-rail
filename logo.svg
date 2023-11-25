@@ -1,1 +1,6 @@
-<polygon points="150,18 244,182 56,182" fill="purple" />
+
+        <svg width="300" height="200">
+          <rect x="0" y="0" width="200" height="200" fill="purple" />
+          <text x="100" y="110" fill="orange" text-anchor="middle" font-size="40">DOG</text>
+        </svg>
+      

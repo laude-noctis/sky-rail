@@ -35,21 +35,32 @@ const questions = [
 
 const generateSvgContent = ({ text, colorText, shape, colorShape }) => {
     let shapeInstance;
-
-if (shape === "triangle") {
-    shapeInstance = new Triangle(colorShape);
-} else if (shape === "circle") {
-    shapeInstance = new Circle(colorShape);
-} else if (shape === "square") {
-    shapeInstance = new Square(colorShape);
-}
-
-shapeInstance.setColor(colorShape);
-shapeInstance.text = text;
-shapeInstance.colorText = colorText;
-
-return shapeInstance.render()
-};
+  
+    if (shape === "triangle") {
+      shapeInstance = new Triangle(colorShape);
+      var [x, y] = [150, 150];
+    } else if (shape === "circle") {
+      shapeInstance = new Circle(colorShape);
+      var [x, y] = [150, 109];
+    } else if (shape === "square") {
+      shapeInstance = new Square(colorShape);
+      var [x, y] = [100, 110];
+    }
+  
+    shapeInstance.text = text;
+    shapeInstance.colorText = colorText;
+  
+    function render() {
+      return `
+        <svg width="300" height="200">
+          ${shapeInstance.render()}
+          <text x="${x}" y="${y}" fill="${colorText}" text-anchor="middle" font-size="40">${text}</text>
+        </svg>
+      `;
+    }
+  
+    return render();
+  };
 
 
 function writeToFile(fileName, content) {
