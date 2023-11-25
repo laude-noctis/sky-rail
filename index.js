@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { Triangle, Circle, Square } = require("./lib/shapes.js")
 
 const questions = [
     {
@@ -25,11 +26,23 @@ const questions = [
     },
 ];
 
-const generateSvgContent = ({ text, colorText, shape, colorShape }) =>
-`<svg>
-<text fill="${colorText}">${text}</text>
-<${shape} fill="${colorShape}"></${shape}>
-</svg>`;
+const generateSvgContent = ({ text, colorText, shape, colorShape }) => {
+    let shapeInstance;
+
+if (shape === "triangle") {
+    shapeInstance = new Triangle(colorShape);
+} else if (shape === "circle") {
+    shapeInstance = new Circle(colorShape);
+} else if (shape === "square") {
+    shapeInstance = new Square(colorShape);
+}
+
+shapeInstance.setColor(colorShape);
+shapeInstance.text = text;
+shapeInstance.colorText = colorText;
+
+return shapeInstance.render();
+};
 
 
 function writeToFile(fileName, content) {
@@ -40,13 +53,13 @@ function writeToFile(fileName, content) {
             console.log(`Generated ${fileName}! :)`);
         }
     });
-}
+};
 
 function init() {
     inquirer.prompt(questions).then((answers) => {
       const svgContent = generateSvgContent(answers);
       writeToFile("logo.svg", svgContent);
     });
-}
+};
 
-init()
+init();
