@@ -48,7 +48,7 @@ shapeInstance.setColor(colorShape);
 shapeInstance.text = text;
 shapeInstance.colorText = colorText;
 
-return shapeInstance.render();
+return shapeInstance.render()
 };
 
 
