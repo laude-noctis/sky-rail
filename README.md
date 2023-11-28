@@ -12,4 +12,4 @@ inquirer - https://www.npmjs.com/package/inquirer/v/8.2.4
 jest - https://www.npmjs.com/package/jest  
 
 ## Tutorial Video
-Link: tbd
+Link: https://drive.google.com/file/d/14XNCtp2sIYXwCj0WoRaSPayYmyiMQ3JR/view
