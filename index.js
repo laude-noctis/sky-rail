@@ -52,7 +52,8 @@ const generateSvgContent = ({ text, colorText, shape, colorShape }) => {
   
     function render() {
       return `
-        <svg width="300" height="200">
+        <svg xmlns="http://www.w3.org/2000/svg"
+        version="1.1" width="300px" height="200px">
           ${shapeInstance.render()}
           <text x="${x}" y="${y}" fill="${colorText}" text-anchor="middle" font-size="40">${text}</text>
         </svg>

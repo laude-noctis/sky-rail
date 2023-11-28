@@ -1,7 +1,7 @@
 # sky-rail
 
 ## Description
-This application uses Inquirer to take you through a questionaire for getting parameters for a logo. It will then takes your answers and will apply them to the code to create the desired logo.
+This application uses Inquirer to take you through a questionaire for getting preferred styling for a logo. It will then takes your answers and will apply them to the code to create the desired logo.
 
 ## Usage/Tests
 To invoke the application, run `node index.js` in the command line  
